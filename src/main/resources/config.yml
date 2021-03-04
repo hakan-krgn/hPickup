@@ -19,9 +19,10 @@ gui-main:
       datavalue: 0
       lore:
         - ''
-        - '&aClick to enable/disable auto block drops.'
+        - '&aClick to enable/disable'
+        - '&aauto block drops.'
       nbt: '{}'
-      slot: 11
+      slot: 10
     mob-drops:
       type: 'DIAMOND_SWORD'
       name: '&2Mob drops'
@@ -30,7 +31,8 @@ gui-main:
       datavalue: 0
       lore:
         - ''
-        - '&aClick to enable/disable auto mob drops.'
+        - '&aClick to enable/disable'
+        - '&aauto mob drops.'
       nbt: '{}'
       slot: 12
     block-translator:
@@ -41,9 +43,10 @@ gui-main:
       datavalue: 0
       lore:
         - ''
-        - '&aClick to enable/disable auto block drops.'
+        - '&aClick to enable/disable'
+        - '&aauto block drops.'
       nbt: '{}'
-      slot: 13
+      slot: 14
     mine-smelt:
       type: 'IRON_INGOT'
       name: '&2Mine Smelter'
@@ -52,6 +55,7 @@ gui-main:
       datavalue: 0
       lore:
         - ''
-        - '&aClick to enable/disable mine smelter.'
+        - '&aClick to enable/disable'
+        - '&amine smelter.'
       nbt: '{}'
-      slot: 14
+      slot: 16
