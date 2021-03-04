@@ -22,7 +22,7 @@ public class Commands implements CommandExecutor {
             } else if (args.length == 1) {
                 if (args[0].equals("reload") || args[0].equals("yenile")) {
                     PickupPlugin.config.reload();
-                    for (String material : PickupPlugin.config.getConfigurationSection("settings.auto-block").getKeys(false)) {
+                    /*for (String material : PickupPlugin.config.getConfigurationSection("settings.auto-block").getKeys(false)) {
 
                         String[] x2 = material.split(":");
 
@@ -31,7 +31,7 @@ public class Commands implements CommandExecutor {
                         int needAmount = PickupPlugin.config.getInt("settings.auto-block." + material + ".amount");
 
                         Variables.itemStackList.put(new ItemStack(materialType, needAmount, Byte.parseByte(typeString[1])), new ItemStack(Material.valueOf(x2[0]), 1, Byte.parseByte(x2[1])));
-                    }
+                    }*/
 
                     commandSender.sendMessage("hPickup has been reloaded.");
                 }

@@ -51,7 +51,7 @@ public class PickupPlugin extends JavaPlugin {
         pm.registerEvents(new PluginDisableListener(), this);
         getCommand("hpickup").setExecutor(new Commands());
 
-        for (String material : config.getConfigurationSection("settings.auto-block").getKeys(false)) {
+        /*for (String material : config.getConfigurationSection("settings.auto-block").getKeys(false)) {
 
             String[] x2 = material.split(":");
 
@@ -60,7 +60,7 @@ public class PickupPlugin extends JavaPlugin {
             int needAmount = config.getInt("settings.auto-block." + material + ".amount");
 
             Variables.itemStackList.put(new ItemStack(materialType, needAmount, Byte.parseByte(typeString[1])), new ItemStack(Material.valueOf(x2[0]), 1,  Byte.parseByte(x2[1])));
-        }
+        }*/
 
         new BukkitRunnable() {
             @Override
