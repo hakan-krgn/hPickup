@@ -3,8 +3,8 @@ package com.hakan.pickup.listeners.pickuplisteners;
 import com.hakan.pickup.PickupPlugin;
 import com.hakan.pickup.PlayerData;
 import com.hakan.pickup.api.PickupAPI;
-import com.hakan.pickup.utils.Variables;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -45,7 +45,8 @@ public class BlockPickupListener implements Listener {
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        Collection<Entity> entities = event.getBlock().getLocation().getNearbyEntities(0.8, 0.8, 0.8);
+                        Location location = event.getBlock().getLocation();
+                        Collection<Entity> entities = location.getWorld().getNearbyEntities(location, 0.8, 0.8, 0.8);
                         for (Entity entity : entities) {
                             if (entity instanceof Item) {
                                 Item item = ((Item) entity);
