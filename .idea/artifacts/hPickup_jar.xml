@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="hPickup:jar">
+    <output-path>$PROJECT_DIR$/../../../Minecraft [server-MC]/Plugin 1.16/plugins</output-path>
+    <root id="archive" name="hPickup.jar">
+      <element id="module-output" name="hPickup" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/hakan-krgn/HInventory/1.0.4/HInventory-1.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/hakan/SQLiteAPI/1.0.0/SQLiteAPI-1.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/hakan/ItemBuilder/1.0.0/ItemBuilder-1.0.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

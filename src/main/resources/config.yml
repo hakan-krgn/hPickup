@@ -1,0 +1,57 @@
+settings:
+  auto-block: #will be added with a new update
+    'DIAMOND:0':
+      amount: 9
+      type: 'DIAMOND_BLOCK'
+    'EMERALD:0':
+      amount: 9
+      type: 'EMERALD_BLOCK'
+
+gui-main:
+  title: 'Pickup Menu'
+  size: 3
+  items:
+    block-drops:
+      type: 'EMERALD_BLOCK'
+      name: '&2Block drops'
+      glow: false
+      amount: 1
+      datavalue: 0
+      lore:
+        - ''
+        - '&aClick to enable/disable auto block drops.'
+      nbt: '{}'
+      slot: 11
+    mob-drops:
+      type: 'DIAMOND_SWORD'
+      name: '&2Mob drops'
+      glow: false
+      amount: 1
+      datavalue: 0
+      lore:
+        - ''
+        - '&aClick to enable/disable auto mob drops.'
+      nbt: '{}'
+      slot: 12
+    block-translator:
+      type: 'QUARTZ_BLOCK'
+      name: '&2Block translator'
+      glow: false
+      amount: 1
+      datavalue: 0
+      lore:
+        - ''
+        - '&aClick to enable/disable auto block drops.'
+      nbt: '{}'
+      slot: 13
+    mine-smelt:
+      type: 'IRON_INGOT'
+      name: '&2Mine Smelter'
+      glow: false
+      amount: 1
+      datavalue: 0
+      lore:
+        - ''
+        - '&aClick to enable/disable mine smelter.'
+      nbt: '{}'
+      slot: 14
