@@ -36,6 +36,8 @@ public class DataManager {
                 playerDataHashMap.put(playerName, playerData);
             }
 
+            statement.close();
+
             if (callback != null) {
                 callback.complete(true);
             }
@@ -71,6 +73,8 @@ public class DataManager {
                     statement.executeUpdate("UPDATE hPickup SET blockDrop = " + blockDrop + ", blockTranslator = " + blockTranslator + ", mineSmelt = " + mineSmelt + ", mobDrop = " + mobDrop + " WHERE playerName = '" + playerName + "'");
                 }
             }
+
+            statement.close();
 
             callback.complete(true);
         } catch (SQLException sqlException) {

@@ -52,9 +52,9 @@ public class PickupPlugin extends JavaPlugin {
 
         for (String material : config.getConfigurationSection("settings.auto-block-items").getKeys(false)) {
 
-            Material fromBlock = Material.valueOf(material);
+            Material fromBlock = Material.matchMaterial(material);
             int needAmount = config.getInt("settings.auto-block-items." + material + ".amount");
-            Material toBlock = Material.valueOf(config.getString("settings.auto-block-items." + material + ".type"));
+            Material toBlock = Material.matchMaterial(config.getString("settings.auto-block-items." + material + ".type"));
             TranslatableBlock translatableBlock = new TranslatableBlock(fromBlock, toBlock, needAmount);
 
             Variables.itemStackList.put(fromBlock, translatableBlock);

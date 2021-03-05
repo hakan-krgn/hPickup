@@ -27,9 +27,9 @@ public class Commands implements CommandExecutor {
 
                         for (String material : PickupPlugin.config.getConfigurationSection("settings.auto-block-items").getKeys(false)) {
 
-                            Material fromBlock = Material.valueOf(material);
+                            Material fromBlock = Material.matchMaterial(material);
                             int needAmount = PickupPlugin.config.getInt("settings.auto-block-items." + material + ".amount");
-                            Material toBlock = Material.valueOf(PickupPlugin.config.getString("settings.auto-block-items." + material + ".type"));
+                            Material toBlock = Material.matchMaterial(PickupPlugin.config.getString("settings.auto-block-items." + material + ".type"));
                             TranslatableBlock translatableBlock = new TranslatableBlock(fromBlock, toBlock, needAmount);
 
                             Variables.itemStackList.put(fromBlock, translatableBlock);
