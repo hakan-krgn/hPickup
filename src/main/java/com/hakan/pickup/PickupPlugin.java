@@ -8,6 +8,7 @@ import com.hakan.pickup.listeners.bukkitlisteners.PluginDisableListener;
 import com.hakan.pickup.listeners.pickuplisteners.BlockPickupListener;
 import com.hakan.pickup.listeners.pickuplisteners.MobDropListener;
 import com.hakan.pickup.utils.DataManager;
+import com.hakan.pickup.utils.Metrics;
 import com.hakan.pickup.utils.Variables;
 import com.hakan.pickup.utils.yaml.Yaml;
 import com.hakan.sqliteapi.SQLite;
@@ -34,6 +35,7 @@ public class PickupPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
+        new Metrics(this, 10561);
         InventoryAPI.setup(this);
         Variables.sqLite = new SQLite(new File(getDataFolder() + "/data/playerData.db"));
         ItemCreator.setup(this, "type", "name", "lore", "amount", "datavalue", "glow", "nbt", "slot");
