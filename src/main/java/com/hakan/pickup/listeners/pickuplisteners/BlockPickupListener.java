@@ -69,7 +69,9 @@ public class BlockPickupListener implements Listener {
                     @Override
                     public void run() {
                         for (Material material : materials) {
-                            Utils.updateInventory(player, Variables.itemStackList.get(material));
+                            if (Variables.itemStackList.containsKey(material)) {
+                                Utils.updateInventory(player, Variables.itemStackList.get(material));
+                            }
                         }
                     }
                 }.runTaskLater(PickupPlugin.getInstance(), 2);
