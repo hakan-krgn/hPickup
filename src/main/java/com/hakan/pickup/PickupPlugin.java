@@ -12,6 +12,7 @@ import com.hakan.pickup.utils.Variables;
 import com.hakan.pickup.utils.yaml.Yaml;
 import com.hakan.sqliteapi.SQLite;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -47,16 +48,15 @@ public class PickupPlugin extends JavaPlugin {
         pm.registerEvents(new PluginDisableListener(), this);
         getCommand("hpickup").setExecutor(new Commands());
 
-        /*for (String material : config.getConfigurationSection("settings.auto-block").getKeys(false)) {
+        for (String material : config.getConfigurationSection("settings.auto-block-items").getKeys(false)) {
 
-            String[] x2 = material.split(":");
+            Material fromBlock = Material.valueOf(material);
+            int needAmount = config.getInt("settings.auto-block-items." + material + ".amount");
+            Material toBlock = Material.valueOf(config.getString("settings.auto-block-items." + material + ".type"));
+            TranslatableBlock translatableBlock = new TranslatableBlock(fromBlock, toBlock, needAmount);
 
-            String[] typeString = config.getString("settings.auto-block." + material + ".type").split(":");
-            Material materialType = Material.valueOf(typeString[0]);
-            int needAmount = config.getInt("settings.auto-block." + material + ".amount");
-
-            Variables.itemStackList.put(new ItemStack(materialType, needAmount, Byte.parseByte(typeString[1])), new ItemStack(Material.valueOf(x2[0]), 1,  Byte.parseByte(x2[1])));
-        }*/
+            Variables.itemStackList.put(fromBlock, translatableBlock);
+        }
 
         new BukkitRunnable() {
             @Override

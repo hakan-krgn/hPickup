@@ -1,7 +1,10 @@
 package com.hakan.pickup.cmd;
 
 import com.hakan.pickup.PickupPlugin;
+import com.hakan.pickup.TranslatableBlock;
 import com.hakan.pickup.gui.MainGUI;
+import com.hakan.pickup.utils.Variables;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,16 +24,16 @@ public class Commands implements CommandExecutor {
                 if (commandSender.isOp() || commandSender instanceof ConsoleCommandSender) {
                     if (args[0].equals("reload") || args[0].equals("yenile")) {
                         PickupPlugin.config.reload();
-                    /*for (String material : PickupPlugin.config.getConfigurationSection("settings.auto-block").getKeys(false)) {
 
-                        String[] x2 = material.split(":");
+                        for (String material : PickupPlugin.config.getConfigurationSection("settings.auto-block-items").getKeys(false)) {
 
-                        String[] typeString = PickupPlugin.config.getString("settings.auto-block." + material + ".type").split(":");
-                        Material materialType = Material.valueOf(typeString[0]);
-                        int needAmount = PickupPlugin.config.getInt("settings.auto-block." + material + ".amount");
+                            Material fromBlock = Material.valueOf(material);
+                            int needAmount = PickupPlugin.config.getInt("settings.auto-block-items." + material + ".amount");
+                            Material toBlock = Material.valueOf(PickupPlugin.config.getString("settings.auto-block-items." + material + ".type"));
+                            TranslatableBlock translatableBlock = new TranslatableBlock(fromBlock, toBlock, needAmount);
 
-                        Variables.itemStackList.put(new ItemStack(materialType, needAmount, Byte.parseByte(typeString[1])), new ItemStack(Material.valueOf(x2[0]), 1, Byte.parseByte(x2[1])));
-                    }*/
+                            Variables.itemStackList.put(fromBlock, translatableBlock);
+                        }
 
                         commandSender.sendMessage("hPickup has been reloaded.");
                     }

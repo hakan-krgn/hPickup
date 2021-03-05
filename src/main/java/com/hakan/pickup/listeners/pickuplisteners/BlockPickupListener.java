@@ -3,6 +3,8 @@ package com.hakan.pickup.listeners.pickuplisteners;
 import com.hakan.pickup.PickupPlugin;
 import com.hakan.pickup.PlayerData;
 import com.hakan.pickup.api.PickupAPI;
+import com.hakan.pickup.utils.Utils;
+import com.hakan.pickup.utils.Variables;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,7 +17,9 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class BlockPickupListener implements Listener {
 
@@ -41,6 +45,7 @@ public class BlockPickupListener implements Listener {
                         return;
                 }
             }
+            List<Material> materials = new ArrayList<>();
             if (playerData.has(PlayerData.PickupType.BLOCK_DROPS)) {
                 new BukkitRunnable() {
                     @Override
@@ -50,14 +55,25 @@ public class BlockPickupListener implements Listener {
                         for (Entity entity : entities) {
                             if (entity instanceof Item) {
                                 Item item = ((Item) entity);
-                                player.getInventory().addItem(item.getItemStack());
+                                ItemStack itemStack = item.getItemStack();
+                                player.getInventory().addItem(itemStack);
+                                materials.add(itemStack.getType());
                                 item.remove();
                             }
                         }
                     }
                 }.runTaskLater(PickupPlugin.getInstance(), 1);
             }
-
+            if (playerData.has(PlayerData.PickupType.BLOCK_TRANSLATOR)) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        for (Material material : materials) {
+                            Utils.updateInventory(player, Variables.itemStackList.get(material));
+                        }
+                    }
+                }.runTaskLater(PickupPlugin.getInstance(), 2);
+            }
         }
     }
 }

@@ -1,9 +1,14 @@
 settings:
-  auto-block: #will be added with a new update
-    'DIAMOND:0':
+  auto-pickup: true
+  auto-block: true
+  auto-mob: true
+  auto-mine: true
+
+  auto-block-items:
+    'DIAMOND':
       amount: 9
       type: 'DIAMOND_BLOCK'
-    'EMERALD:0':
+    'EMERALD':
       amount: 9
       type: 'EMERALD_BLOCK'
 
