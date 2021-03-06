@@ -1,7 +1,9 @@
 package com.hakan.pickup.api;
 
+import com.hakan.pickup.PickupPlugin;
 import com.hakan.pickup.PlayerData;
 import com.hakan.pickup.utils.Variables;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -31,10 +33,13 @@ public class PickupAPI {
 
     public static void createPlayerData(String playerName) {
         PlayerData playerData = new PlayerData(playerName);
-        playerData.set(PlayerData.PickupType.BLOCK_DROPS, true);
-        playerData.set(PlayerData.PickupType.BLOCK_TRANSLATOR, true);
-        playerData.set(PlayerData.PickupType.MINE_SMELT, true);
-        playerData.set(PlayerData.PickupType.MOB_DROPS, false);
+
+        Player player = Bukkit.getPlayerExact(playerName);
+        boolean playerIsNotNull = player != null;
+        playerData.set(PlayerData.PickupType.BLOCK_DROPS, playerIsNotNull && player.hasPermission(PickupPlugin.config.getString("settings.auto-pickup-perm")));
+        playerData.set(PlayerData.PickupType.BLOCK_TRANSLATOR, playerIsNotNull && player.hasPermission(PickupPlugin.config.getString("settings.auto-block-perm")));
+        playerData.set(PlayerData.PickupType.MINE_SMELT, playerIsNotNull && player.hasPermission(PickupPlugin.config.getString("settings.auto-mine-perm")));
+        playerData.set(PlayerData.PickupType.MOB_DROPS, playerIsNotNull && player.hasPermission(PickupPlugin.config.getString("settings.auto-mob-perm")));
 
         Variables.playerData.put(playerName, playerData);
     }

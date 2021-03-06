@@ -1,8 +1,8 @@
 settings:
-  auto-pickup: true
-  auto-block: true
-  auto-mob: true
-  auto-mine: true
+  auto-pickup-perm: 'auto.pickup'
+  auto-block-perm: 'auto.block'
+  auto-mob-perm: 'auto.mob'
+  auto-mine-perm: 'auto.mine'
 
   auto-block-items:
     'DIAMOND':
