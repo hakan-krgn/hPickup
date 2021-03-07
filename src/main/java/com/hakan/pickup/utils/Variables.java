@@ -15,5 +15,7 @@ public class Variables {
     public static SQLite sqLite;
     public static boolean canJoin = false;
     public static String serverVersion;
+    public static String active;
+    public static String passive;
 
 }

@@ -8,6 +8,8 @@ import com.hakan.pickup.PickupPlugin;
 import com.hakan.pickup.PlayerData;
 import com.hakan.pickup.api.PickupAPI;
 import com.hakan.pickup.utils.PlaySound;
+import com.hakan.pickup.utils.Utils;
+import com.hakan.pickup.utils.Variables;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -28,6 +30,7 @@ public class MainGUI {
             playerData.set(PlayerData.PickupType.BLOCK_DROPS, false);
             autoBlock.setType(Material.BARRIER);
         }
+        autoBlock.setLore(Utils.replaceList(autoBlock.getLore(), "%mode%", playerData.has(PlayerData.PickupType.BLOCK_DROPS) ? Variables.active : Variables.passive));
         autoBlock.setGlow(playerData.has(PlayerData.PickupType.BLOCK_DROPS));
         hInventory.setItem(autoBlock.getSlot(), ClickableItem.of(autoBlock.complete(), (event) -> {
             if (hasPickup) {
@@ -43,6 +46,7 @@ public class MainGUI {
             playerData.set(PlayerData.PickupType.MOB_DROPS, false);
             mobDrops.setType(Material.BARRIER);
         }
+        mobDrops.setLore(Utils.replaceList(mobDrops.getLore(), "%mode%", playerData.has(PlayerData.PickupType.MOB_DROPS) ? Variables.active : Variables.passive));
         mobDrops.setGlow(playerData.has(PlayerData.PickupType.MOB_DROPS));
         hInventory.setItem(mobDrops.getSlot(), ClickableItem.of(mobDrops.complete(), (event) -> {
             if (hasMob) {
@@ -58,6 +62,7 @@ public class MainGUI {
             playerData.set(PlayerData.PickupType.BLOCK_TRANSLATOR, false);
             blockTranslator.setType(Material.BARRIER);
         }
+        blockTranslator.setLore(Utils.replaceList(blockTranslator.getLore(), "%mode%", playerData.has(PlayerData.PickupType.BLOCK_TRANSLATOR) ? Variables.active : Variables.passive));
         blockTranslator.setGlow(playerData.has(PlayerData.PickupType.BLOCK_TRANSLATOR));
         hInventory.setItem(blockTranslator.getSlot(), ClickableItem.of(blockTranslator.complete(), (event) -> {
             if (hasAutoBlock) {
@@ -73,6 +78,7 @@ public class MainGUI {
             playerData.set(PlayerData.PickupType.MINE_SMELT, false);
             mineSmelter.setType(Material.BARRIER);
         }
+        mineSmelter.setLore(Utils.replaceList(mineSmelter.getLore(), "%mode%", playerData.has(PlayerData.PickupType.MINE_SMELT) ? Variables.active : Variables.passive));
         mineSmelter.setGlow(playerData.has(PlayerData.PickupType.MINE_SMELT));
         hInventory.setItem(mineSmelter.getSlot(), ClickableItem.of(mineSmelter.complete(), (event) -> {
             if (hasMineSmelt) {

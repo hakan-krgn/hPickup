@@ -4,6 +4,10 @@ settings:
   auto-mob-perm: 'auto.mob'
   auto-mine-perm: 'auto.mine'
 
+  mode:
+    active: '&aActive'
+    passive: '&cPassive'
+
   auto-block-items:
     'DIAMOND':
       amount: 9
@@ -26,6 +30,8 @@ gui-main:
         - ''
         - '&aClick to enable/disable'
         - '&aauto block drops.'
+        - ''
+        - '&fMode: %mode%'
       nbt: '{}'
       slot: 10
     mob-drops:
@@ -38,6 +44,8 @@ gui-main:
         - ''
         - '&aClick to enable/disable'
         - '&aauto mob drops.'
+        - ''
+        - '&fMode: %mode%'
       nbt: '{}'
       slot: 12
     block-translator:
@@ -50,6 +58,8 @@ gui-main:
         - ''
         - '&aClick to enable/disable'
         - '&aauto block drops.'
+        - ''
+        - '&fMode: %mode%'
       nbt: '{}'
       slot: 14
     mine-smelt:
@@ -62,5 +72,7 @@ gui-main:
         - ''
         - '&aClick to enable/disable'
         - '&amine smelter.'
+        - ''
+        - '&fMode: %mode%'
       nbt: '{}'
       slot: 16

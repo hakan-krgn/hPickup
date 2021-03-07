@@ -13,6 +13,7 @@ import com.hakan.pickup.utils.Variables;
 import com.hakan.pickup.utils.yaml.Yaml;
 import com.hakan.sqliteapi.SQLite;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -35,13 +36,15 @@ public class PickupPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
+        config = new Yaml(getDataFolder() + "/config.yml", "config.yml");
+
         new Metrics(this, 10561);
         InventoryAPI.setup(this);
         Variables.sqLite = new SQLite(new File(getDataFolder() + "/data/playerData.db"));
         ItemCreator.setup(this, "type", "name", "lore", "amount", "datavalue", "glow", "nbt", "slot");
         Variables.serverVersion = Bukkit.getServer().getClass().getName().split("\\.")[3];
-
-        config = new Yaml(getDataFolder() + "/config.yml", "config.yml");
+        Variables.active = ChatColor.translateAlternateColorCodes('&', config.getString("settings.mode.active"));
+        Variables.passive = ChatColor.translateAlternateColorCodes('&', config.getString("settings.mode.passive"));
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new BlockPickupListener(), this);

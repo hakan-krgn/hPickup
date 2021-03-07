@@ -30,4 +30,12 @@ public class Utils {
         player.getInventory().addItem(new ItemStack(translatableBlock.getTo(), added));
         player.getInventory().addItem(new ItemStack(translatableBlock.getFrom(), extra));
     }
+
+    public static List<String> replaceList(List<String> strings, String replace, String with) {
+        List<String> newList = new ArrayList<>();
+        for (String value : strings) {
+            newList.add(value.replace(replace, with));
+        }
+        return newList;
+    }
 }
