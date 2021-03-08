@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -18,11 +19,12 @@ public class MobDropListener implements Listener {
             Player player = event.getEntity().getKiller();
             PlayerData playerData = PickupAPI.getPlayerData(player);
             if (playerData.has(PlayerData.PickupType.MOB_DROPS)) {
+                Inventory inventory = player.getInventory();
                 for (ItemStack dropItem : new ArrayList<>(event.getDrops())) {
-                    if (player.getInventory().firstEmpty() == -1) {
+                    if (inventory.firstEmpty() == -1) {
                         return;
                     }
-                    player.getInventory().addItem(dropItem);
+                    inventory.addItem(dropItem);
                     event.getDrops().remove(dropItem);
                 }
             }

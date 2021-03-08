@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -28,7 +29,10 @@ public class BlockPickupListener implements Listener {
         Player player = event.getPlayer();
         if (player.getGameMode().equals(GameMode.SURVIVAL)) {
             PlayerData playerData = PickupAPI.getPlayerData(player);
-            if (player.getInventory().firstEmpty() == -1) {
+
+            Inventory inventory = player.getInventory();
+
+            if (inventory.firstEmpty() == -1) {
                 return;
             }
             if (playerData.has(PlayerData.PickupType.MINE_SMELT)) {
@@ -36,12 +40,12 @@ public class BlockPickupListener implements Listener {
                     case IRON_ORE:
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        player.getInventory().addItem(new ItemStack(Material.IRON_INGOT));
+                        inventory.addItem(new ItemStack(Material.IRON_INGOT));
                         return;
                     case GOLD_ORE:
                         event.setCancelled(true);
                         event.getBlock().setType(Material.AIR);
-                        player.getInventory().addItem(new ItemStack(Material.GOLD_INGOT));
+                        inventory.addItem(new ItemStack(Material.GOLD_INGOT));
                         return;
                 }
             }
@@ -56,7 +60,7 @@ public class BlockPickupListener implements Listener {
                             if (entity instanceof Item) {
                                 Item item = ((Item) entity);
                                 ItemStack itemStack = item.getItemStack();
-                                player.getInventory().addItem(itemStack);
+                                inventory.addItem(itemStack);
                                 materials.add(itemStack.getType());
                                 item.remove();
                             }
