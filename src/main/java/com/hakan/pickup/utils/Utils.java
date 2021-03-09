@@ -38,4 +38,15 @@ public class Utils {
         }
         return newList;
     }
+
+    public static void setXp(Player player, int xp) {
+        player.setTotalExperience(0);
+        player.setLevel(0);
+        player.setExp(0);
+        player.giveExp(xp);
+    }
+
+    public static void addXp(Player player, int xp) {
+        setXp(player, player.getTotalExperience() + xp);
+    }
 }

@@ -2,6 +2,7 @@ package com.hakan.pickup.listeners.pickuplisteners;
 
 import com.hakan.pickup.PlayerData;
 import com.hakan.pickup.api.PickupAPI;
+import com.hakan.pickup.utils.Utils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,10 @@ public class MobDropListener implements Listener {
             Player player = event.getEntity().getKiller();
             PlayerData playerData = PickupAPI.getPlayerData(player);
             if (playerData.has(PlayerData.PickupType.MOB_DROPS)) {
+
+                Utils.addXp(player, event.getDroppedExp());
+                event.setDroppedExp(0);
+
                 Inventory inventory = player.getInventory();
                 for (ItemStack dropItem : new ArrayList<>(event.getDrops())) {
                     if (inventory.firstEmpty() == -1) {
