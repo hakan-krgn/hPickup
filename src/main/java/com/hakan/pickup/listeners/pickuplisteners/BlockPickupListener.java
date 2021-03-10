@@ -82,7 +82,7 @@ public class BlockPickupListener implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            Collection<Entity> entities = finalLocation.getWorld().getNearbyEntities(finalLocation, 0.8, 0.8, 0.8);
+                            Collection<Entity> entities = finalLocation.getWorld().getNearbyEntities(finalLocation, 0.9, 0.9, 0.9);
                             for (Entity entity : entities) {
                                 if (entity instanceof Item) {
                                     Item item = ((Item) entity);
