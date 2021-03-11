@@ -27,14 +27,14 @@ public class Yaml {
             createFile(fileURL);
             if (bufferedReader != null) {
                 try {
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.file)));
+                    BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(this.file)));
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
-                        bw.write(line);
-                        bw.newLine();
+                        bufferedWriter.write(line);
+                        bufferedWriter.newLine();
                     }
                     bufferedReader.close();
-                    bw.close();
+                    bufferedWriter.close();
                 } catch (IOException e) {
                     System.out.println("An internal error");
                 }
